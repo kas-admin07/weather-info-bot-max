@@ -7,10 +7,17 @@ logger = logging.getLogger(__name__)
 
 def handler(event, context):
     """
-    Функция проверки работоспособности сервиса
+    Функция проверки здоровья сервиса
     """
     try:
         logger.info("Health check запрос")
+        
+        response_data = {
+            'status': 'healthy',
+            'service': 'Weather Bot',
+            'version': '1.0.0',
+            'timestamp': context.aws_request_id if hasattr(context, 'aws_request_id') else 'unknown'
+        }
         
         return {
             'statusCode': 200,
@@ -18,22 +25,13 @@ def handler(event, context):
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
-            'body': json.dumps({
-                'status': 'healthy',
-                'service': 'Weather Bot Webhook',
-                'timestamp': context.aws_request_id if hasattr(context, 'aws_request_id') else 'unknown'
-            })
+            'body': json.dumps(response_data)
         }
         
     except Exception as e:
-        logger.error(f"Ошибка в health check: {e}")
+        logger.error(f"Ошибка health check: {e}")
         return {
             'statusCode': 500,
-            'headers': {
-                'Content-Type': 'application/json'
-            },
-            'body': json.dumps({
-                'status': 'error',
-                'message': str(e)
-            })
+            'headers': {'Content-Type': 'application/json'},
+            'body': json.dumps({'status': 'unhealthy', 'error': str(e)})
         }
