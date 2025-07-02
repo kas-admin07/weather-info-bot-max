@@ -1,0 +1,32 @@
+[build]
+  command = "pip install -r requirements.txt"
+  publish = "."
+
+[build.environment]
+  PYTHON_VERSION = "3.10"
+
+# Настройка для Python функций
+[functions]
+  directory = "netlify/functions"
+
+# Перенаправления для API endpoints
+[[redirects]]
+  from = "/webhook/max"
+  to = "/.netlify/functions/webhook"
+  status = 200
+
+[[redirects]]
+  from = "/health"
+  to = "/.netlify/functions/health"
+  status = 200
+
+[[redirects]]
+  from = "/echo"
+  to = "/.netlify/functions/echo"
+  status = 200
+
+# Обработка всех остальных запросов - возвращаем 404
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
