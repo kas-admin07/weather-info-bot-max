@@ -1,55 +1,32 @@
-# Переменные окружения и конфиденциальные данные
+# Зависимости
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Переменные окружения
 .env
 .env.local
-.env.production
-
-# Сессии и временные файлы
-Sessions/
-*.session
-*.session-journal
+.env.development.local
+.env.test.local
+.env.production.local
 
 # Логи
+logs
 *.log
-logs/
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-PIPFILE.lock
+# Временные файлы
+.tmp/
+.cache/
 
-# Virtual environments
-venv/
-env/
-ENV/
-.venv/
-.env/
-
-# IDE
+# IDE файлы
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# OS файлы
 .DS_Store
 .DS_Store?
 ._*
@@ -58,33 +35,24 @@ ENV/
 ehthumbs.db
 Thumbs.db
 
-# SSL сертификаты
-*.pem
-*.key
-*.crt
-*.cert
+# Сессии и данные
+Sessions/
+*.session
+*.session-journal
 
-# Временные файлы
-*.tmp
-*.temp
-
-# Backup файлы
-*.bak
+# Резервные копии
+backup/
 *.backup
+*.bak
 
-# Netlify
-.netlify/
+# Сборка
+dist/
+build/
 
-# Local development
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Покрытие тестов
+coverage/
+.nyc_output/
 
-# Testing
-.coverage
-.pytest_cache/
-.tox/
-
-# Documentation
-docs/_build/
+# Другие
+*.tgz
+*.tar.gz
