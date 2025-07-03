@@ -2,11 +2,10 @@
   "name": "weather-info-bot-max",
   "version": "1.0.0",
   "description": "MAX бот для получения информации о погоде",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node --watch index.js",
-    "build": "echo 'No build step required for JavaScript'"
+    "start": "node bot.js",
+    "dev": "node --watch bot.js"
   },
   "keywords": [
     "bot",
@@ -19,12 +18,7 @@
   "dependencies": {
     "@maxhub/max-bot-api": "^0.2.1",
     "axios": "^1.6.0",
-    "dotenv": "^16.6.1",
-    "express": "^4.18.0",
-    "node-fetch": "^3.3.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.0"
+    "dotenv": "^16.6.1"
   },
   "engines": {
     "node": ">=18.0.0"
